@@ -23,6 +23,16 @@ To complete this tutorial, you will need the following:
 
 [Replit](https://replit.com/) is an online integrated development environment (IDE) that allows you to code in many programming languages, collaborate with others in real-time, and host and run your applications in the cloud. It's a great platform for beginners, educators, and professionals who want to quickly spin up a new project or prototype, or for teams who want to work together on code.
 
+## Plugin Flow:
+
+1. **Create a manifest file**: Host a manifest file at yourdomain.com/.well-known/ai-plugin.json, containing metadata about the plugin, authentication details, and an OpenAPI spec for the exposed endpoints.
+2. **Register the plugin in ChatGPT UI**: Install the plugin using the ChatGPT UI, providing the necessary OAuth 2 client\_id and client\_secret or API key for authentication.
+3. **Users activate the plugin**: Users manually activate the plugin in the ChatGPT UI. During the alpha phase, developers can share their plugins with 15 additional users.
+4. **Authentication**: If needed, users are redirected via OAuth to your plugin for authentication, and new accounts can be created.
+5. **Users begin a conversation**: OpenAI injects a compact description of the plugin into the ChatGPT conversation, which remains invisible to users. The model may invoke an API call from the plugin if relevant, and the API results are incorporated into its response.
+6. **API responses**: The model may include links from API calls in its response, displaying them as rich previews using the OpenGraph protocol.
+7. **User location data**: The user's country and state are sent in the Plugin conversation header for relevant use cases like shopping, restaurants, or weather. Additional data sources require user opt-in via a consent screen.
+
 ## Step 1: Setting up the Plugin Manifest
 
 The first step in creating a plugin is to define a manifest file. The manifest file provides information about the plugin, such as its name, description, and authentication method. The authentication method we will be using is a service level authentication token.
@@ -30,7 +40,7 @@ The first step in creating a plugin is to define a manifest file. The manifest f
 Create a new file named manifest.json in your project directory and add the following code:
 
     {
-    #openapi.yaml
+    #manifest.json
       "schema_version": "v1",
       "name_for_human": "TODO Plugin (service http)",
       "name_for_model": "todo",
