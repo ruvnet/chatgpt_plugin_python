@@ -25,7 +25,7 @@ To complete this tutorial, you will need the following:
 
 ## Plugin Flow:
 
-1. **Create a manifest file**: Host a manifest file at yourdomain.com/.well-known/ai-plugin.json, containing metadata about the plugin, authentication details, and an OpenAPI spec for the exposed endpoints.
+1. **Create a manifest file**: Host a manifest file at yourdomain.com/.well-known/manifest.json, containing metadata about the plugin, authentication details, and an OpenAPI spec for the exposed endpoints.
 2. **Register the plugin in ChatGPT UI**: Install the plugin using the ChatGPT UI, providing the necessary OAuth 2 client\_id and client\_secret or API key for authentication.
 3. **Users activate the plugin**: Users manually activate the plugin in the ChatGPT UI. During the alpha phase, developers can share their plugins with 15 additional users.
 4. **Authentication**: If needed, users are redirected via OAuth to your plugin for authentication, and new accounts can be created.
